@@ -3,10 +3,10 @@ import { SALEOR_API_URL_HEADER, SALEOR_AUTHORIZATION_BEARER_HEADER } from "@sale
 import { httpBatchLink } from "@trpc/client";
 
 function getBaseUrl() {
-  if (typeof window !== "undefined") return "";
+  if (typeof window !== "undefined") return process.env.NEXT_PUBLIC_BASE_PATH || "";
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
 
-  return `http://localhost:${process.env.PORT ?? 3000}`;
+  return `http://localhost:${process.env.PORT ?? 3000}${process.env.NEXT_PUBLIC_BASE_PATH || ""}`;
 }
 
 export const createHttpBatchLink = (appBridgeInstance?: AppBridge) => {

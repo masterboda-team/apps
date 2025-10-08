@@ -21,6 +21,7 @@ const nextConfig: NextConfig = {
 
     return config;
   },
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || "",
 };
 
 // Make sure to export sentry config as the last one - https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#apply-instrumentation-to-your-app
