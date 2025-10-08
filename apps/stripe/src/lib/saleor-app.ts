@@ -18,7 +18,9 @@ switch (env.APL) {
   }
 
   default: {
-    apl = new FileAPL();
+    apl = new FileAPL({
+      fileName: env.APL_FILE_PATH,
+    });
     break;
   }
 }

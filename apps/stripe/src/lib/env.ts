@@ -17,6 +17,7 @@ export const env = createEnv({
   server: {
     ALLOWED_DOMAIN_PATTERN: z.string().optional(),
     APL: z.enum(["saleor-cloud", "file", "dynamodb"]).optional().default("file"),
+    APL_FILE_PATH: z.string().optional(),
     APP_API_BASE_URL: z.string().optional(),
     APP_IFRAME_BASE_URL: z.string().optional(),
     APP_LOG_LEVEL: z.enum(["fatal", "error", "warn", "info", "debug", "trace"]).default("info"),
@@ -45,6 +46,7 @@ export const env = createEnv({
   runtimeEnv: {
     ALLOWED_DOMAIN_PATTERN: process.env.ALLOWED_DOMAIN_PATTERN,
     APL: process.env.APL,
+    APL_FILE_PATH: process.env.APL_FILE_PATH,
     APP_API_BASE_URL: process.env.APP_API_BASE_URL,
     APP_IFRAME_BASE_URL: process.env.APP_IFRAME_BASE_URL,
     APP_LOG_LEVEL: process.env.APP_LOG_LEVEL,
