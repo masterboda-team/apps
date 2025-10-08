@@ -1,8 +1,9 @@
-import { verifyJWT } from "@saleor/app-sdk/auth";
+// import { verifyJWT } from "@saleor/app-sdk/auth"; // NOTE: this function does not work if the url contains a base path
 import { ObservabilityAttributes } from "@saleor/apps-otel/src/observability-attributes";
 import { setTag } from "@sentry/nextjs";
 import { TRPCError } from "@trpc/server";
 
+import { verifyJWT } from "@/auth-utils/verify-jwt";
 import { createInstrumentedGraphqlClient } from "@/lib/graphql-client";
 import { createLogger } from "@/lib/logger";
 import { saleorApp } from "@/lib/saleor-app";
