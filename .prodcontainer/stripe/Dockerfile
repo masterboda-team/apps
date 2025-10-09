@@ -1,7 +1,6 @@
 FROM node:22-bullseye AS base
 
-ENV NEXT_TELEMETRY_DISABLED=1
-ENV NODE_ENV="development"
+ENV TURBO_ENV_MODE=loose
 
 # Required environment variables
 ARG SECRET_KEY
@@ -32,8 +31,8 @@ ENV NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH}
 ARG APP_LOG_LEVEL="debug"
 ENV APP_LOG_LEVEL=${APP_LOG_LEVEL}
 
-ARG APP_IFRAME_BASE_URL
-ENV APP_IFRAME_BASE_URL=""
+ARG APP_IFRAME_BASE_URL=""
+ENV APP_IFRAME_BASE_URL=${APP_IFRAME_BASE_URL}
 
 ARG APP_API_BASE_URL=""
 ENV APP_API_BASE_URL=${APP_API_BASE_URL}
@@ -54,21 +53,29 @@ COPY . .
 
 RUN pnpm i --prefer-offline
 
-# Run stage, run the application
+# Build stage, build the application
+FROM base AS builder
+
+WORKDIR /app
+
+COPY --from=deps /app .
+
+RUN pnpm turbo run build --filter=saleor-app-payment-stripe
+
+# Production image, copy all the files and run next
 FROM base AS runner
-
-RUN apt update && apt install -y awscli
-
-COPY --from=deps /app /app
-
-WORKDIR /app/apps/stripe
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-RUN mkdir .next
+RUN apt update && apt install -y awscli
+
+WORKDIR /app
+
+COPY --from=builder /app .
+
+WORKDIR /app/apps/stripe
+
 RUN chown nextjs:nodejs .next
 
-ENV NODE_ENV="development"
-
-CMD ["sh", "-c", "pnpm run setup-dynamodb -e $AWS_ENDPOINT_URL && pnpm dev --hostname 0.0.0.0 --port 3000"]
+CMD ["sh", "-c", "pnpm run setup-dynamodb -e $AWS_ENDPOINT_URL && pnpm start"]

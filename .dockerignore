@@ -1,0 +1,15 @@
+node_modules
+.next
+.turbo
+**/node_modules
+**/.next
+**/.turbo
+
+# Ignore apps that are not needed in the container
+apps/avatax
+apps/cms
+apps/klaviyo
+apps/product-feed
+apps/search
+apps/segment
+apps/smtp
