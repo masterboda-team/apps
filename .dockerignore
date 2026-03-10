@@ -12,4 +12,4 @@ apps/klaviyo
 apps/product-feed
 apps/search
 apps/segment
-apps/smtp
+#apps/smtp

@@ -42,7 +42,9 @@ switch (aplType) {
     break;
 
   case "file":
-    apl = new FileAPL();
+    apl = new FileAPL({
+      fileName: process.env.APL_FILE_PATH,
+    });
 
     break;
 
