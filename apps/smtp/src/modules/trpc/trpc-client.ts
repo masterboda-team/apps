@@ -7,10 +7,10 @@ import { appBridgeInstance } from "../../pages/_app";
 import type { AppRouter } from "./trpc-app-router";
 
 function getBaseUrl() {
-  if (typeof window !== "undefined") return "";
+  if (typeof window !== "undefined") return process.env.NEXT_PUBLIC_BASE_PATH || "";
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
 
-  return `http://localhost:${process.env.PORT ?? 3000}`;
+  return `http://localhost:${process.env.PORT ?? 3000}${process.env.NEXT_PUBLIC_BASE_PATH || ""}`;
 }
 
 const logger = createLogger("trpc-client");
