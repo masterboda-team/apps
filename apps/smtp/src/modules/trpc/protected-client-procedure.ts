@@ -1,5 +1,6 @@
-import { verifyJWT } from "@saleor/app-sdk/auth";
+// import { verifyJWT } from "@saleor/app-sdk/auth";
 import { REQUIRED_SALEOR_PERMISSIONS } from "@saleor/apps-shared/permissions";
+import { verifyJWT } from "@saleor/auth-utils";
 import { TRPCError } from "@trpc/server";
 
 import { createInstrumentedGraphqlClient } from "../../lib/create-instrumented-graphql-client";
