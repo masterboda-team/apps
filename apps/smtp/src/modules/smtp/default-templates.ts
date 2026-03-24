@@ -347,6 +347,24 @@ const defaultOrderFulfillmentUpdatedMjmlTemplate = `<mjml>
   </mj-body>
 </mjml>`;
 
+const defaultStaffSetPasswordRequestedMjmlTemplate = `<mjml>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <mj-text font-size="16px">
+          Hi {{user.firstName}} {{user.lastName}}!
+        </mj-text>
+        <mj-text>
+          Password reset has been requested. Please follow the link to proceed: 
+        </mj-text>
+        <mj-button href="{{redirectUrl}}"  background-color="black" color="white" padding-top="50px" inner-padding="20px" width="70%">
+            Reset the password 
+        </mj-button>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>`;
+
 export const defaultMjmlTemplates: Record<MessageEventTypes, string> = {
   ACCOUNT_CHANGE_EMAIL_CONFIRM: defaultAccountChangeEmailConfirmationMjmlTemplate,
   ACCOUNT_CHANGE_EMAIL_REQUEST: defaultAccountChangeEmailRequestMjmlTemplate,
@@ -362,6 +380,7 @@ export const defaultMjmlTemplates: Record<MessageEventTypes, string> = {
   ORDER_FULFILLMENT_UPDATE: defaultOrderFulfillmentUpdatedMjmlTemplate,
   ORDER_FULLY_PAID: defaultOrderFullyPaidMjmlTemplate,
   ORDER_REFUNDED: defaultOrderRefundedMjmlTemplate,
+  STAFF_SET_PASSWORD_REQUESTED: defaultStaffSetPasswordRequestedMjmlTemplate,
 };
 
 export const defaultMjmlSubjectTemplates: Record<MessageEventTypes, string> = {
@@ -379,4 +398,5 @@ export const defaultMjmlSubjectTemplates: Record<MessageEventTypes, string> = {
   ORDER_FULFILLMENT_UPDATE: "Fulfillment for order {{ order.number }} has been updated",
   ORDER_FULLY_PAID: "Order {{ order.number }} has been fully paid",
   ORDER_REFUNDED: "Order {{ order.number }} has been refunded",
+  STAFF_SET_PASSWORD_REQUESTED: "Password reset request",
 };

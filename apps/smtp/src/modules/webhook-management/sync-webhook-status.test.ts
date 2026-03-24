@@ -57,6 +57,7 @@ describe("syncWebhookStatus", function () {
       orderFullyPaidWebhook: false,
       giftCardSentWebhook: false,
       orderRefundedWebhook: false,
+      staffSetPasswordRequstedWebhook: false,
     });
 
     const getWebhooksStatusMock = vi
@@ -71,6 +72,7 @@ describe("syncWebhookStatus", function () {
         orderFullyPaidWebhook: false,
         giftCardSentWebhook: false,
         orderRefundedWebhook: false,
+        staffSetPasswordRequstedWebhook: false,
       });
 
     await syncWebhookStatus({
@@ -102,6 +104,7 @@ describe("syncWebhookStatus", function () {
       orderFullyPaidWebhook: false,
       giftCardSentWebhook: false,
       orderRefundedWebhook: false,
+      staffSetPasswordRequstedWebhook: false,
     });
 
     const getWebhooksStatusMock = vi
@@ -116,6 +119,7 @@ describe("syncWebhookStatus", function () {
         orderFullyPaidWebhook: false,
         giftCardSentWebhook: false,
         orderRefundedWebhook: false,
+        staffSetPasswordRequstedWebhook: false,
       });
 
     await syncWebhookStatus({
@@ -147,6 +151,7 @@ describe("syncWebhookStatus", function () {
       orderFullyPaidWebhook: false,
       giftCardSentWebhook: false,
       orderRefundedWebhook: false,
+      staffSetPasswordRequstedWebhook: false,
     });
 
     const getWebhooksStatusMock = vi
@@ -161,6 +166,7 @@ describe("syncWebhookStatus", function () {
         orderFullyPaidWebhook: false,
         giftCardSentWebhook: false,
         orderRefundedWebhook: false,
+        staffSetPasswordRequstedWebhook: false,
       });
 
     await syncWebhookStatus({

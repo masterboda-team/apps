@@ -17,4 +17,5 @@ export const webhookStatusesFactory = ({
   orderFulfilledWebhook: !!enabledWebhooks?.includes("orderFulfilledWebhook"),
   orderFullyPaidWebhook: !!enabledWebhooks?.includes("orderFullyPaidWebhook"),
   orderRefundedWebhook: !!enabledWebhooks?.includes("orderRefundedWebhook"),
+  staffSetPasswordRequstedWebhook: !!enabledWebhooks?.includes("staffSetPasswordRequstedWebhook"),
 });

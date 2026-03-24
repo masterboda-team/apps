@@ -8,6 +8,7 @@ import {
   OrderFulfilledWebhookPayloadFragment,
   OrderFullyPaidWebhookPayloadFragment,
   OrderRefundedWebhookPayloadFragment,
+  StaffSetPasswordRequestedWebhookPayloadFragment,
 } from "../../../generated/graphql";
 import {
   NotifyPayloadAccountChangeEmailConfirmation,
@@ -578,6 +579,27 @@ const giftCardSentPayload: GiftCardSentWebhookPayloadFragment = {
   },
 };
 
+const staffSetPasswordRequested: StaffSetPasswordRequestedWebhookPayloadFragment = {
+  channel: {
+    slug: "default-channel",
+  },
+  user: {
+    email: "example@email.com",
+    firstName: "John",
+    lastName: "Doe",
+  },
+  token: "bmt4kc-d6e379b762697f6aa357527af36bb9f6",
+  redirectUrl:
+    "http://example.com?email=example%40email.com&token=bmt4kc-d6e379b762697f6aa357527af36bb9f6",
+  shop: {
+    name: "Saleor e-commerce",
+    domain: {
+      host: "demo.saleor.cloud",
+      url: "https://demo.saleor.cloud",
+    },
+  },
+};
+
 export const examplePayloads: Record<MessageEventTypes, any> = {
   ACCOUNT_CHANGE_EMAIL_CONFIRM: accountChangeEmailConfirmPayload,
   ACCOUNT_CHANGE_EMAIL_REQUEST: accountChangeEmailRequestPayload,
@@ -593,4 +615,5 @@ export const examplePayloads: Record<MessageEventTypes, any> = {
   ORDER_FULLY_PAID: orderFullyPaidPayload,
   ORDER_FULFILLMENT_UPDATE: fulfillmentUpdatePayload,
   ORDER_REFUNDED: orderRefundedPayload,
+  STAFF_SET_PASSWORD_REQUESTED: staffSetPasswordRequested,
 };

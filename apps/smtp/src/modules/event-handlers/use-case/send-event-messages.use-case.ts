@@ -65,7 +65,7 @@ export class SendEventMessagesUseCase {
     event: MessageEventTypes;
     payload: unknown;
     recipientEmail: string;
-    channelSlug: string;
+    channelSlug?: string;
   }) {
     const eventSettings = config.events.find((e) => e.eventType === event);
 
@@ -189,7 +189,7 @@ export class SendEventMessagesUseCase {
     recipientEmail,
     channelSlug,
   }: {
-    channelSlug: string;
+    channelSlug?: string;
     payload: unknown;
     recipientEmail: string;
     event: MessageEventTypes;

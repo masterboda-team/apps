@@ -11,6 +11,7 @@ import { orderCreatedWebhook } from "../../pages/api/webhooks/order-created";
 import { orderFulfilledWebhook } from "../../pages/api/webhooks/order-fulfilled";
 import { orderFullyPaidWebhook } from "../../pages/api/webhooks/order-fully-paid";
 import { orderRefundedWebhook } from "../../pages/api/webhooks/order-refunded";
+import { staffSetPasswordRequstedWebhook } from "../../pages/api/webhooks/staff-set-password-requested";
 import { MessageEventTypes } from "../event-handlers/message-event-types";
 import { FeatureFlagService } from "../feature-flag-service/feature-flag-service";
 import { createAppWebhook, deleteAppWebhook, fetchAppWebhooks } from "./api-operations";
@@ -25,6 +26,7 @@ export const AppWebhooks = {
   orderFulfilledWebhook,
   orderFullyPaidWebhook,
   orderRefundedWebhook,
+  staffSetPasswordRequstedWebhook,
 };
 
 export type AppWebhook = keyof typeof AppWebhooks;
@@ -44,6 +46,7 @@ export const eventToWebhookMapping: Record<MessageEventTypes, AppWebhook> = {
   ORDER_FULLY_PAID: "orderFullyPaidWebhook",
   ORDER_REFUNDED: "orderRefundedWebhook",
   ORDER_FULFILLMENT_UPDATE: "notifyWebhook",
+  STAFF_SET_PASSWORD_REQUESTED: "staffSetPasswordRequstedWebhook",
 };
 
 const logger = createLogger("WebhookManagementService");
